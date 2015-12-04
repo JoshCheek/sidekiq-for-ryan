@@ -25,19 +25,27 @@ $ bundle install
 $ bundle exec rake db:setup
 ```
 
-Window 1: Start the Rails server
+Window 1: Start Redis
+
+(this worked on mine, idk if it's general, or where I got it from)
+
+```
+$ redis-server /usr/local/etc/redis.conf
+```
+
+Window 2: Start the Rails server
 
 ```
 $ rails s
 ```
 
-Window 2: start sidekiq
+Window 3: start sidekiq
 
 ```
 $ bundle exec sidekiq
 ```
 
-Window 3: Check the data
+Window 4: Check the data
 
 (`jq` pretty prints the JSON response,
 if you don't it, get it with `brew install jq`)
@@ -46,7 +54,7 @@ if you don't it, get it with `brew install jq`)
 $ curl localhost:3000/auctions | jq .
 ```
 
-Window 4: Open a console
+Window 5: Open a console
 
 To fake out events that would happen in the controller in a real app.
 
